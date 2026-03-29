@@ -1,0 +1,68 @@
+{
+  "MediatR Command + Handler": {
+    "prefix": "cmd",
+    "description": "Génère une Command MediatR avec son Handler",
+    "body": [
+      "using Api_Sport.Data;",
+      "using MediatR;",
+      "",
+      "namespace Api_Sport.Features.${1:FeatureName};",
+      "",
+      "// Command",
+      "public record ${2:Action}Command(${3:// paramètres}) : IRequest;",
+      "",
+      "// Handler",
+      "public class ${2:Action}Handler : IRequestHandler<${2:Action}Command>",
+      "{",
+      "    private readonly Api_SportDbContext _context;",
+      "",
+      "    public ${2:Action}Handler(Api_SportDbContext context)",
+      "    {",
+      "        _context = context;",
+      "    }",
+      "",
+      "    public async Task Handle(${2:Action}Command command, CancellationToken cancellationToken)",
+      "    {",
+      "        $0",
+      "        await _context.SaveChangesAsync(cancellationToken);",
+      "    }",
+      "}"
+    ]
+  },
+
+  "MediatR Query + Handler": {
+    "prefix": "qry",
+    "description": "Génère une Query MediatR avec son Handler et DTO de réponse",
+    "body": [
+      "using Api_Sport.Data;",
+      "using MediatR;",
+      "using Microsoft.EntityFrameworkCore;",
+      "",
+      "namespace Api_Sport.Features.${1:FeatureName};",
+      "",
+      "// Query",
+      "public record ${2:Get}Query : IRequest<List<${2:Get}Dto>>;",
+      "",
+      "// DTO de réponse",
+      "public record ${2:Get}Dto(${3:// propriétés});",
+      "",
+      "// Handler",
+      "public class ${2:Get}Handler : IRequestHandler<${2:Get}Query, List<${2:Get}Dto>>",
+      "{",
+      "    private readonly Api_SportDbContext _context;",
+      "",
+      "    public ${2:Get}Handler(Api_SportDbContext context)",
+      "    {",
+      "        _context = context;",
+      "    }",
+      "",
+      "    public async Task<List<${2:Get}Dto>> Handle(${2:Get}Query query, CancellationToken cancellationToken)",
+      "    {",
+      "        return await _context.${4:DbSet}",
+      "            .Select(x => new ${2:Get}Dto($0))",
+      "            .ToListAsync(cancellationToken);",
+      "    }",
+      "}"
+    ]
+  }
+}
