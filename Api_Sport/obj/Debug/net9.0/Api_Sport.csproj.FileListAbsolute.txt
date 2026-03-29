@@ -166,3 +166,4 @@
 /Users/carolinevanaerschot/Documents/Projects/Api_Sport/Api_Sport/obj/Debug/net9.0/ref/Api_Sport.dll
 /Users/carolinevanaerschot/Documents/Projects/Api_Sport/Api_Sport/bin/Debug/net9.0/MediatR.dll
 /Users/carolinevanaerschot/Documents/Projects/Api_Sport/Api_Sport/bin/Debug/net9.0/MediatR.Contracts.dll
+/Users/carolinevanaerschot/Documents/Projects/Api_Sport/Api_Sport/obj/Debug/net9.0/Api_Sport.sourcelink.json
